@@ -1,33 +1,28 @@
-i#include "main.h"
+#include "main.h"
+#include <stdio.h>
 
 /**
- * _strspn - gets the length of a preix substring
- * @s: string to evaluate
- * @accept: string containing the list of characters to match in s
- * Return:  the number of bytes in the initial segment of
- * s which consist only of bytes from accept
+ *  _strchr - locate a character in a string
+ *  @s: string to check
+ *  @c: character to locate
+ *  Return: a pointer to the first occurrence of the character c
+ *  in the string s, or NULL if the character is not found
  */
-unsigned int _strspn(char *s, char *accept)
+char *_strchr(char *s, char c)
 {
-	unsigned int i = 0;
-	int j;
+	int a;
 
-
-	while (*s)
+	while (1)
 	{
-		for (j = 0; accept[j]; j++)
+
+		a = *s++;
+		if (a == c)
 		{
-			if (accept[j] == *s)
-			{
-				i++;
-				break;
-			}
-
-			else if ((accept[j + 1]) == '\0')
-				return (i);
+			return (s - 1);
 		}
-		s++;
+		if (a == 0)
+		{
+			return (NULL);
+		}
 	}
-
-	return (i);
 }
